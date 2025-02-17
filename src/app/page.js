@@ -14,6 +14,9 @@ export default function Page() {
   const parallaxContact = useTransform(scrollY, [3200, 4000], ["0%", "-5%"]);
 
   useEffect(() => {
+    const initialSection = window.location.hash ? window.location.hash.substring(1) : "welcome";
+    setActiveSection(initialSection);
+    
     const handleScroll = () => {
       const sections = ["welcome", "about", "gallery", "highlights", "contact"];
       let currentSection = "welcome";
