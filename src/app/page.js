@@ -117,7 +117,7 @@ export default function Page() {
       <section id="gallery" className="py-16 h-screen bg-gray-900 text-white flex flex-col items-center justify-center relative">
         <h2 className="text-5xl font-bold mb-6">Gallery</h2>
         <div className="grid grid-cols-2 md:grid-cols-3 gap-6 p-6">
-          {[1, 2, 3, 4, 5, 6].map((num) => (
+          {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20].map((num) => (
             <motion.div key={num} className="overflow-hidden rounded-lg shadow-lg"
               whileHover={{ scale: 1.1 }}
             >
