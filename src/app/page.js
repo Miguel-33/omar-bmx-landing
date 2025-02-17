@@ -50,7 +50,6 @@ export default function Page() {
 
   return (
     <div className="relative font-sans bg-gray-100 text-gray-800 min-h-screen">
-      <div className="hidden bg-green-500 bg-purple-500"></div>
       {/* Navigation Dots */}
       <motion.div
         initial={{ x: -50, opacity: 0 }}
@@ -75,17 +74,20 @@ export default function Page() {
       </motion.div>
 
       {/* Welcome Section */}
-      <section id="welcome" className="h-screen flex items-center justify-center relative text-white">
-        <motion.div className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: "url(/images/ODJJersey.jpg)" }} animate={{ y: parallaxWelcome }}
+      <section id="welcome" className="py-16 h-screen bg-gray-100 flex items-center justify-center relative text-white overflow-hidden">
+        <motion.div
+          className="parallax-background absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: "url(/images/ODJBMX10.jpg)" }}
+          animate={{ y: parallaxWelcome }}
         ></motion.div>
         <div className="relative z-10 text-center">
-          <motion.h1 className="text-9xl font-extrabold tracking-wide mb-4 drop-shadow-lg text-white z-10"
+          <motion.h1
+            className="text-9xl font-extrabold tracking-wide mb-4 drop-shadow-lg text-white z-10"
             initial={{ opacity: 0, y: -50, scale: 0.8 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             transition={{ duration: 1, ease: "easeOut" }}
           >
-            <span className="text-white bg-clip-text ">
+            <span className="text-white bg-clip-text">
               Omar De Jesus
             </span>
           </motion.h1>
@@ -104,10 +106,12 @@ export default function Page() {
 
       {/* About Section */}
       <section id="about" className="py-16 h-screen bg-gray-900 text-white flex flex-col items-center justify-center relative">
-        <motion.div className="absolute inset-0 bg-cover bg-center opacity-50"
-          style={{ backgroundImage: "url(/images/ODJBMX8.jpg)" }} animate={{ y: parallaxAbout }}
+        <motion.div
+          className="absolute inset-0 bg-cover bg-center opacity-50"
+          style={{ backgroundImage: "url(/images/ODJBMX11.jpg)" }}
+          animate={{ y: parallaxAbout }}
         ></motion.div>
-        <h2 className="text-5xl font-bold mb-6">About Omar</h2>
+        <h2 className="text-5xl font-bold mb-6 z-10">About Omar</h2>
         <p className="text-xl text-center mb-8 max-w-3xl z-10">
           Omar De Jesus is a passionate BMX racer from Puerto Rico who is a part of the renowned Factory LRC/Mongoose BMX Team <a href="https://www.instagram.com/weareflrcm/"><span className="font-bold">[ @weareflrcm ]</span></a>. From training sessions at local tracks to making waves at global competitions like the 2024 UCI BMX Worlds, Omar's journey in BMX racing has been filled with hard work, victories, and the constant pursuit of improvement. He recently took second place in the opening day race at Derby City BMX and competed at the Music City Nationals, where his love for the sport shone through, despite facing setbacks. With a resilient spirit, Omar embraces the highs and lows of BMX, always focused on getting back stronger.
         </p>
@@ -116,23 +120,30 @@ export default function Page() {
       {/* Gallery Section */}
       <section id="gallery" className="py-16 h-screen bg-gray-900 text-white flex flex-col items-center justify-center relative">
         <h2 className="text-5xl font-bold mb-6">Gallery</h2>
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-6 p-6">
-          {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20].map((num) => (
-            <motion.div key={num} className="overflow-hidden rounded-lg shadow-lg"
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-6 w-full max-w-screen-xl">
+          {[1, 2, 3, 4, 5, 6, 7, 8].map((num) => (
+            <motion.div
+              key={num}
+              className="overflow-hidden rounded-lg shadow-lg"
               whileHover={{ scale: 1.1 }}
             >
-              <img src={`/images/ODJBMX${num}.jpg`} alt={`BMX Shot ${num}`} className="w-full h-64 object-cover" />
+              <img
+                src={`/images/ODJBMX${num}.jpg`}
+                alt={`BMX Shot ${num}`}
+                className="w-full h-64 object-cover"
+              />
             </motion.div>
           ))}
-
         </div>
       </section>
 
       {/* Highlights Section */}
-      <section id="highlights" className="py-16 h-screen bg-gray-900 text-white flex flex-col items-center justify-center relative"><motion.div className="absolute inset-0 bg-cover bg-center opacity-50"
-        style={{ backgroundImage: "url(/images/ODJBMX7.jpg)" }}
-      ></motion.div>
-        <h2 className="text-5xl font-bold mb-6">Highlights</h2>
+      <section id="highlights" className="py-16 h-screen bg-gray-900 text-white flex flex-col items-center justify-center relative">
+        <motion.div
+          className="absolute inset-0 bg-cover bg-center opacity-50"
+          style={{ backgroundImage: "url(/images/ODJBMX16.jpg)" }}
+        ></motion.div>
+        <h2 className="text-5xl font-bold mb-6 z-10">Highlights</h2>
         <div className="max-w-4xl mx-auto z-10">
           {[
             { year: "2024", event: "UCI BMX Worlds - Incredible Experience", location: "Rock Hill, SC", result: "Represented Puerto Rico in one of the biggest BMX competitions worldwide" },
@@ -140,7 +151,9 @@ export default function Page() {
             { year: "2024", event: "Derby City BMX - Opening Day", location: "Louisville, KY", result: "Took 2nd place in Cruiser race during opening day" },
             { year: "2024", event: "Recovery & Training", location: "Home", result: "Focused on rehabilitation after injury and continued riding for fun while preparing for future races" }
           ].map((highlight, index) => (
-            <motion.div key={index} className="p-6 mb-6 bg-gray-800 rounded-lg shadow-lg z-10"
+            <motion.div
+              key={index}
+              className="p-6 mb-6 bg-gray-800 rounded-lg shadow-lg z-10"
               whileHover={{ scale: 1.05 }}
             >
               <h3 className="text-3xl font-semibold">{highlight.year}</h3>
@@ -153,12 +166,12 @@ export default function Page() {
 
       {/* Contact Section */}
       <section id="contact" className="py-16 h-screen bg-gray-800 text-white flex flex-col items-center justify-center relative">
-        <motion.div className="absolute inset-0 bg-cover bg-center opacity-50"
-          style={{ backgroundImage: "url(/images/ODJatGate.jpg)" }} animate={{ y: parallaxContact }}
+        <motion.div
+          className="absolute inset-0 bg-cover bg-center opacity-50"
+          style={{ backgroundImage: "url(/images/ODJBMX5.jpg)" }}
+          animate={{ y: parallaxContact }}
         ></motion.div>
-
-        <h2 className="text-5xl font-bold mb-6">Get in Touch</h2>
-
+        <h2 className="text-5xl font-bold mb-6 z-10">Get in Touch</h2>
         {/* Instagram Embed */}
         <div className="mt-6 z-10">
           <blockquote
@@ -185,7 +198,6 @@ export default function Page() {
         <p>&copy; {new Date().getFullYear()} <span>Omar De Jesus</span> | All Rights Reserved</p>
         <p className="text-sm mt-2">Powered by <a href="#" target="_blank" rel="noopener noreferrer" className="text-yellow-500 hover:underline">Thirty3 Digital</a></p>
       </footer>
-
     </div>
   );
 }

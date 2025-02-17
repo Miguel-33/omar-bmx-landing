@@ -1,105 +1,15 @@
-/* src/styles/globals.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  font-family: Arial, sans-serif;
-  line-height: 1.6;
-  background-color: #f4f4f4;
-  color: #333;
-  padding: 20px;
-}
-
-h1, h2 {
-  text-align: center;
-  margin-bottom: 10px;
-}
-
-section {
-  margin: 40px 0;
-}
-
-section#hero {
-  background-color: #4e73df;
-  color: white;
-  padding: 50px 20px;
-  text-align: center;
-}
-
-section#bio, section#achievements, section#events, section#gallery, section#contact {
-  background-color: #fff;
-  padding: 40px 20px;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-button {
-  background-color: #4e73df;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  cursor: pointer;
-  font-size: 16px;
-  margin-top: 20px;
-  border-radius: 5px;
-}
-
-button:hover {
-  background-color: #2e59d9;
-}
-
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-ul li {
-  margin: 10px 0;
-}
-
-#sponsors img {
-  width: 150px;
-  margin: 10px;
-}
-
-#gallery img {
-  width: 200px;
-  margin: 10px;
-  border-radius: 5px;
-}
-
-a {
-  color: #4e73df;
-  text-decoration: none;
-}
-
-a:hover {
-  text-decoration: underline;
-}
-
-/* Mobile styles */
-@media (max-width: 768px) {
-  #hero {
-    padding: 30px 15px;
+@layer base {
+  body {
+    font-family: 'Inter', sans-serif; /* or your custom font */
+    margin: 0;
+    padding: 0;
   }
+}
 
-  section {
-    padding: 20px 10px;
-  }
-
-  button {
-    padding: 8px 16px;
-  }
-
-  #sponsors img {
-    width: 120px;
-  }
-
-  #gallery img {
-    width: 150px;
-  }
+html {
+  scroll-behavior: smooth;
 }
