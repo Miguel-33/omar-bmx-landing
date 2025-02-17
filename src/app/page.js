@@ -14,9 +14,6 @@ export default function Page() {
   const parallaxContact = useTransform(scrollY, [3200, 4000], ["0%", "-5%"]);
 
   useEffect(() => {
-    const initialSection = window.location.hash ? window.location.hash.substring(1) : "welcome";
-    setActiveSection(initialSection);
-    
     const handleScroll = () => {
       const sections = ["welcome", "about", "gallery", "highlights", "contact"];
       let currentSection = "welcome";
@@ -53,12 +50,12 @@ export default function Page() {
 
   return (
     <div className="relative font-sans bg-gray-100 text-gray-800 min-h-screen">
-      {/* Navigation Dots */}
+      {/* Navigation Dots for Desktop */}
       <motion.div
         initial={{ x: -50, opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
         transition={{ duration: 1, ease: "easeOut" }}
-        className="fixed left-6 top-1/2 transform -translate-y-1/2 flex flex-col space-y-6 z-50"
+        className="nav-dots hidden lg:flex fixed left-6 top-1/2 transform -translate-y-1/2 flex-col space-y-6 z-50"
       >
         {["welcome", "about", "gallery", "highlights", "contact"].map((section) => (
           <a key={section} href={`#${section}`} className="group">
@@ -66,26 +63,46 @@ export default function Page() {
               className={`w-5 h-5 rounded-full shadow-lg transition-all duration-300 transform 
                 ${activeSection === section ? "scale-150 shadow-neon" : "scale-100"}
                 ${section === "welcome" ? "bg-red-600" :
-                  section === "about" ? "bg-yellow-500" :
-                    section === "gallery" ? "bg-green-500" :
-                      section === "highlights" ? "bg-purple-500" :
-                        "bg-blue-500"
-                }`}
+                section === "about" ? "bg-yellow-500" :
+                section === "gallery" ? "bg-green-500" :
+                section === "highlights" ? "bg-purple-500" :
+                "bg-blue-500"
+              }`}
+            ></div>
+          </a>
+        ))}
+      </motion.div>
+
+      {/* Navigation Dots for Mobile (Positioned at the bottom) */}
+      <motion.div
+        initial={{ x: -50, opacity: 0 }}
+        animate={{ x: 0, opacity: 1 }}
+        transition={{ duration: 1, ease: "easeOut" }}
+        className="nav-dots-mobile lg:hidden fixed left-1/2 bottom-4 transform -translate-x-1/2 flex space-x-2 z-50"
+      >
+        {["welcome", "about", "gallery", "highlights", "contact"].map((section) => (
+          <a key={section} href={`#${section}`} className="group">
+            <div
+              className={`w-7 h-7 rounded-full shadow-lg transition-all duration-300 transform
+                ${activeSection === section ? "scale-150 shadow-neon" : "scale-100"}
+                ${section === "welcome" ? "bg-red-600" :
+                section === "about" ? "bg-yellow-500" :
+                section === "gallery" ? "bg-green-500" :
+                section === "highlights" ? "bg-purple-500" :
+                "bg-blue-500"
+              }`}
             ></div>
           </a>
         ))}
       </motion.div>
 
       {/* Welcome Section */}
-      <section id="welcome" className="py-16 h-screen bg-gray-100 flex items-center justify-center relative text-white overflow-hidden">
-        <motion.div
-          className="parallax-background absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: "url(/images/ODJBMX10.jpg)" }}
-          animate={{ y: parallaxWelcome }}
+      <section id="welcome" className="h-screen flex items-center justify-center relative text-white space-y-6">
+        <motion.div className="absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: "url(/images/ODJBMX10.jpg)" }} animate={{ y: parallaxWelcome }}
         ></motion.div>
-        <div className="relative z-10 text-center">
-          <motion.h1
-            className="text-9xl font-extrabold tracking-wide mb-4 drop-shadow-lg text-white z-10"
+        <div className="relative z-10 text-center space-y-4">
+          <motion.h1 className="text-6xl md:text-9xl font-extrabold tracking-wide mb-4 drop-shadow-lg text-white z-10"
             initial={{ opacity: 0, y: -50, scale: 0.8 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             transition={{ duration: 1, ease: "easeOut" }}
@@ -108,45 +125,35 @@ export default function Page() {
       </section>
 
       {/* About Section */}
-      <section id="about" className="py-16 h-screen bg-gray-900 text-white flex flex-col items-center justify-center relative">
-        <motion.div
-          className="absolute inset-0 bg-cover bg-center opacity-50"
-          style={{ backgroundImage: "url(/images/ODJBMX11.jpg)" }}
-          animate={{ y: parallaxAbout }}
+      <section id="about" className="py-16 h-screen md:py-24 bg-gray-900 text-white flex flex-col items-center justify-center relative">
+        <motion.div className="absolute inset-0 bg-cover bg-center opacity-50"
+          style={{ backgroundImage: "url(/images/ODJBMX8.jpg)" }} animate={{ y: parallaxAbout }}
         ></motion.div>
-        <h2 className="text-5xl font-bold mb-6 z-10">About Omar</h2>
-        <p className="text-xl text-center mb-8 max-w-3xl z-10">
+        <h2 className="text-3xl md:text-5xl font-bold mb-6 z-10">About Omar</h2>
+        <p className="text-lg md:text-xl text-center mb-8 max-w-3xl z-10 px-6">
           Omar De Jesus is a passionate BMX racer from Puerto Rico who is a part of the renowned Factory LRC/Mongoose BMX Team <a href="https://www.instagram.com/weareflrcm/"><span className="font-bold">[ @weareflrcm ]</span></a>. From training sessions at local tracks to making waves at global competitions like the 2024 UCI BMX Worlds, Omar's journey in BMX racing has been filled with hard work, victories, and the constant pursuit of improvement. He recently took second place in the opening day race at Derby City BMX and competed at the Music City Nationals, where his love for the sport shone through, despite facing setbacks. With a resilient spirit, Omar embraces the highs and lows of BMX, always focused on getting back stronger.
         </p>
       </section>
 
       {/* Gallery Section */}
-      <section id="gallery" className="py-16 h-screen bg-gray-900 text-white flex flex-col items-center justify-center relative">
-        <h2 className="text-5xl font-bold mb-6">Gallery</h2>
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-6 w-full max-w-screen-xl">
-          {[1, 2, 3, 4, 5, 6, 7, 8].map((num) => (
-            <motion.div
-              key={num}
-              className="overflow-hidden rounded-lg shadow-lg"
+      <section id="gallery" className="py-16 min-h-screen bg-gray-900 text-white flex flex-col items-center justify-center relative">
+        <h2 className="text-3xl md:text-5xl font-bold mb-6 h-10">Gallery</h2>
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-6 p-6">
+          {[1, 2, 3, 4, 5, 6].map((num) => (
+            <motion.div key={num} className="overflow-hidden rounded-lg shadow-lg"
               whileHover={{ scale: 1.1 }}
             >
-              <img
-                src={`/images/ODJBMX${num}.jpg`}
-                alt={`BMX Shot ${num}`}
-                className="w-full h-64 object-cover"
-              />
+              <img src={`/images/ODJBMX${num}.jpg`} alt={`BMX Shot ${num}`} className="w-full h-64 object-cover" />
             </motion.div>
           ))}
         </div>
       </section>
 
       {/* Highlights Section */}
-      <section id="highlights" className="py-16 h-screen bg-gray-900 text-white flex flex-col items-center justify-center relative">
-        <motion.div
-          className="absolute inset-0 bg-cover bg-center opacity-50"
-          style={{ backgroundImage: "url(/images/ODJBMX16.jpg)" }}
-        ></motion.div>
-        <h2 className="text-5xl font-bold mb-6 z-10">Highlights</h2>
+      <section id="highlights" className="py-16 min-h-screen bg-gray-900 text-white flex flex-col items-center justify-center relative"><motion.div className="absolute inset-0 bg-cover bg-center opacity-50"
+        style={{ backgroundImage: "url(/images/ODJBMX11.jpg)" }}
+      ></motion.div>
+        <h2 className="text-5xl font-bold mb-6">Highlights</h2>
         <div className="max-w-4xl mx-auto z-10">
           {[
             { year: "2024", event: "UCI BMX Worlds - Incredible Experience", location: "Rock Hill, SC", result: "Represented Puerto Rico in one of the biggest BMX competitions worldwide" },
@@ -154,9 +161,7 @@ export default function Page() {
             { year: "2024", event: "Derby City BMX - Opening Day", location: "Louisville, KY", result: "Took 2nd place in Cruiser race during opening day" },
             { year: "2024", event: "Recovery & Training", location: "Home", result: "Focused on rehabilitation after injury and continued riding for fun while preparing for future races" }
           ].map((highlight, index) => (
-            <motion.div
-              key={index}
-              className="p-6 mb-6 bg-gray-800 rounded-lg shadow-lg z-10"
+            <motion.div key={index} className="p-6 mb-6 bg-gray-800 rounded-lg shadow-lg z-10"
               whileHover={{ scale: 1.05 }}
             >
               <h3 className="text-3xl font-semibold">{highlight.year}</h3>
@@ -168,13 +173,13 @@ export default function Page() {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-16 h-screen bg-gray-800 text-white flex flex-col items-center justify-center relative">
-        <motion.div
-          className="absolute inset-0 bg-cover bg-center opacity-50"
-          style={{ backgroundImage: "url(/images/ODJBMX5.jpg)" }}
-          animate={{ y: parallaxContact }}
+      <section id="contact" className="py-16 min-h-screen bg-gray-900 text-white flex flex-col items-center justify-center relative">
+        <motion.div className="absolute inset-0 bg-cover bg-center opacity-50"
+          style={{ backgroundImage: "url(/images/ODJBMX18.jpg)" }} animate={{ y: parallaxContact }}
         ></motion.div>
+
         <h2 className="text-5xl font-bold mb-6 z-10">Get in Touch</h2>
+
         {/* Instagram Embed */}
         <div className="mt-6 z-10">
           <blockquote

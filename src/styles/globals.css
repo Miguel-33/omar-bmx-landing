@@ -13,3 +13,40 @@
 html {
   scroll-behavior: smooth;
 }
+
+/* Mobile specific styles */
+@media (max-width: 768px) {
+  /* Hide the navigation dots on mobile */
+  .nav-dots {
+    display: none;
+  }
+
+  /* Move navigation dots to the bottom */
+  .nav-dots-mobile {
+    display: flex;
+    position: fixed;
+    justify-self: anchor-center;
+    left: 50%;
+    bottom: 20px;
+    transform: translateX(-50%);
+    flex-direction: row;
+    gap: 1rem;
+    z-index: 50;
+  }
+  
+  /* Adjust size of the dots on mobile */
+  .nav-dots-mobile div {
+    width: 20px;
+    height: 20px;
+  }
+
+  /* Adjust other styles for mobile */
+  section {
+    padding: 20px;
+  }
+
+  .text-section {
+    font-size: 14px;
+  }
+}
+
